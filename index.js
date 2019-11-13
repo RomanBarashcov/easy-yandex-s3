@@ -119,7 +119,7 @@ class EasyYandexS3 {
 			if(file.name) file_upload_name = file.name;
 		}else{
 			file_body = file.buffer;
-			file_ext = '.' + fileExt(file);
+			file_ext = '.' + this.fileExt(file);
 			if(file.name) file_upload_name = file.name;
 		}
 	
