@@ -119,7 +119,7 @@ class EasyYandexS3 {
 			if(file.name) file_upload_name = file.name;
 		}else{
 			file_body = file.buffer;
-			file_ext = '.'+fileType(file_body).ext;
+			file_ext = '.' + fileExt(file);
 			if(file.name) file_upload_name = file.name;
 		}
 	
@@ -153,6 +153,18 @@ class EasyYandexS3 {
 			if(debug) this._log("S3", debug_object,'error:', error);
 			return false;
 		}
+	};
+
+	fileExt(file) {
+
+		switch(file.mimetype) {
+			case "text/plain": return "txt";
+			case "application/msword": return "doc";
+			case "application/vnd.ms-excel": return "xls";
+			case "text/csv": return "csv";
+			default: return fileType(file.buffer).ext;
+		};
+
 	};
 
 
